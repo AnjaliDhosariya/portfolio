@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ArrowRight, ExternalLink, Layers, Network } from "lucide-react";
+import voiceScreenArchImg from "@assets/Screenshot_2026-06-05_at_3.36.08_PM_1780661179818.png";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,7 @@ interface Project {
   outcomes: { metric: string; label: string }[];
   arch: {
     title: string;
+    image?: string;
     steps: ArchStep[];
   };
   tech: string[];
@@ -108,6 +110,7 @@ const PROJECTS: Project[] = [
     ],
     arch: {
       title: "Interview Orchestration Flow",
+      image: voiceScreenArchImg,
       steps: [
         { label: "Session Init", desc: "Load role profile, difficulty level & interview config from Supabase" },
         { label: "Question Agent", desc: "Generate opening question based on role; adapt follow-ups dynamically" },
@@ -313,6 +316,15 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-1">{project.arch.title}</h4>
                   <p className="text-xs text-muted-foreground/60 mb-4">Step-by-step data and control flow</p>
+                  {project.arch.image && (
+                    <div className="mb-5 rounded-xl overflow-hidden border border-border/40">
+                      <img
+                        src={project.arch.image}
+                        alt={`${project.title} architecture diagram`}
+                        className="w-full object-cover"
+                      />
+                    </div>
+                  )}
                   <ArchDiagram steps={project.arch.steps} />
                 </div>
               </motion.div>
