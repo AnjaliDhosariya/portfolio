@@ -78,7 +78,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
           >
-            I build intelligent, multi-agent systems and real-world AI applications that solve complex business problems. I'm not just an AI enthusiast — I build real things.
+            I build intelligent, multi-agent systems and real-world AI applications that solve complex business problems.
           </motion.p>
 
           <motion.div

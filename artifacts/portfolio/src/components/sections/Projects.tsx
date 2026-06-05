@@ -1,37 +1,79 @@
 import { motion } from "framer-motion";
-import { FolderGit2, ExternalLink } from "lucide-react";
+import { Github, BookOpen, Network } from "lucide-react";
 
-const PROJECTS = [
+interface Project {
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  tech: string[];
+  links: {
+    github?: string;
+    architecture?: string;
+    caseStudy?: string;
+  };
+}
+
+const PROJECTS: Project[] = [
   {
     title: "ReviveDesk",
-    techStr: "Gemini 2.5 Flash, LangGraph, FastAPI, Supabase pgVector, RAG",
-    description: "Built a multi-agent sales intelligence platform to identify and revive stalled B2B opportunities using CRM and meeting data. Developed AI agents for company research, sentiment analysis, objection detection, and automated sales recovery strategy generation. Implemented deal scoring using engagement history, sentiment trends, and business signals to prioritize recovery opportunities. Automated meeting intelligence and CRM documentation workflows, significantly reducing manual effort and improving data quality.",
-    tags: ["Multi-Agent AI", "LangGraph", "RAG", "FastAPI", "Supabase", "Gemini"]
+    subtitle: "Multi-Agent B2B Sales Recovery Platform",
+    bullets: [
+      "Multi-Agent Orchestration",
+      "Sentiment & Objection Detection",
+      "Deal Scoring Engine",
+      "Automated CRM Documentation",
+    ],
+    tech: ["LangGraph", "Gemini 2.5 Flash", "FastAPI", "Supabase pgVector", "RAG"],
+    links: { github: "#", architecture: "#", caseStudy: "#" },
   },
   {
     title: "CodeInsight AI",
-    techStr: "Gemini, LangGraph, FastAPI, RAG, Vector Search",
-    description: "Developed an AI-powered repository intelligence system for codebase understanding, engineering onboarding, and software maintenance. Implemented semantic code search and repository-aware retrieval to assist PRD generation and feature analysis. Built RCA workflows that identify potentially impacted files, trace probable error sources, and recommend corrective code changes. Enabled faster developer productivity through AI-assisted code navigation, debugging support, and contextual engineering insights.",
-    tags: ["Code Intelligence", "RAG", "LangGraph", "Semantic Search", "Gemini"]
+    subtitle: "Repository Intelligence & Codebase Analysis System",
+    bullets: [
+      "Semantic Code Search",
+      "Repository-Aware Retrieval",
+      "Root Cause Analysis Workflows",
+      "PRD Generation from Codebase",
+    ],
+    tech: ["LangGraph", "Gemini", "FastAPI", "RAG", "Vector Search"],
+    links: { github: "#", architecture: "#", caseStudy: "#" },
   },
   {
     title: "VoiceScreenAI",
-    techStr: "LangGraph, FastAPI, Supabase, Llama",
-    description: "Engineered an AI-driven interview screening platform leveraging LLMs to autonomously conduct and evaluate technical and behavioral interviews. Architected multi-agent workflows using LangGraph to orchestrate question generation, response analysis and interview flow. Built RESTful APIs with FastAPI and Supabase (PostgreSQL) to manage interview sessions, scoring and persistent state. Implemented adaptive, role-aware scoring with relevance and fraud detection, producing automated and explainable hiring recommendations.",
-    tags: ["Multi-Agent AI", "LangGraph", "FastAPI", "Supabase", "Llama"]
+    subtitle: "AI Interview Screening Platform",
+    bullets: [
+      "Multi-Agent Architecture",
+      "LangGraph Orchestration",
+      "Fraud Detection",
+      "Automated Candidate Evaluation",
+    ],
+    tech: ["LangGraph", "FastAPI", "Supabase", "Llama"],
+    links: { github: "#", architecture: "#", caseStudy: "#" },
   },
   {
     title: "Medical AI Assistant",
-    techStr: "LangChain, Pinecone, Google Generative AI, RAG, FastAPI",
-    description: "Developed a medical chatbot using LangChain, Pinecone, and Google Generative AI embeddings with RAG architecture. Built FastAPI backend with modular APIs for PDF ingestion, query handling, and context-aware responses. Integrated Groq's LLaMA-3-70B-8192 for accurate medical insights with reduced hallucinations. Implemented PDF parsing, embedding generation, and vector search for precise information retrieval.",
-    tags: ["RAG", "LangChain", "Pinecone", "Medical AI", "Groq"]
+    subtitle: "RAG-Powered Clinical Knowledge Chatbot",
+    bullets: [
+      "PDF Ingestion & Parsing",
+      "Vector Search Retrieval",
+      "Hallucination Reduction",
+      "Context-Aware Medical Responses",
+    ],
+    tech: ["LangChain", "Pinecone", "Google Gen AI", "Groq", "FastAPI"],
+    links: { github: "#", architecture: "#", caseStudy: "#" },
   },
   {
     title: "News Summarizer & TTS",
-    techStr: "Groq Llama, gTTS, Sentiment Analysis",
-    description: "Developed a full-stack Python application that extracts and summarizes real-time news articles. Integrated Groq Llama to generate context-aware summaries tailored to user-input keywords. Implemented multilingual support by translating English summaries to Hindi using translation APIs. Converted translated summaries into speech using gTTS, enabling audio playback for user engagement. Performed sentiment analysis and comparative insights across multiple articles to highlight tone.",
-    tags: ["NLP", "LLM", "TTS", "Multilingual", "Sentiment Analysis"]
-  }
+    subtitle: "Multilingual News Intelligence Tool",
+    bullets: [
+      "Real-Time Article Extraction",
+      "Keyword-Driven Summarization",
+      "Hindi Translation Support",
+      "Sentiment & Tone Analysis",
+    ],
+    tech: ["Groq Llama", "gTTS", "NLP", "Sentiment Analysis"],
+    links: { github: "#", architecture: "#", caseStudy: "#" },
+  },
 ];
 
 export default function Projects() {
@@ -54,37 +96,73 @@ export default function Projects() {
           {PROJECTS.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              data-testid={`card-project-${idx}`}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-card border border-card-border rounded-xl p-6 flex flex-col h-full hover:-translate-y-2 hover:border-primary/50 transition-all duration-300 group shadow-lg"
+              transition={{ duration: 0.45, delay: idx * 0.08 }}
+              className="bg-card border border-card-border rounded-xl p-6 flex flex-col hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.08)] transition-all duration-300 group"
             >
-              <div className="flex justify-between items-start mb-6">
-                <FolderGit2 size={40} className="text-primary stroke-1" />
-                <a href="#" className="text-muted-foreground hover:text-secondary transition-colors" data-testid={`link-project-${idx}`}>
-                  <ExternalLink size={20} />
-                </a>
-              </div>
-              
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+              {/* Title & subtitle */}
+              <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-1">
                 {project.title}
               </h3>
-              
-              <p className="text-xs font-mono text-secondary mb-4">
-                {project.techStr}
+              <p className="text-xs text-secondary font-medium mb-4 leading-snug">
+                {project.subtitle}
               </p>
-              
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border/50">
-                {project.tags.map((tag, tagIdx) => (
-                  <span key={tagIdx} className="text-xs font-mono text-muted-foreground">
-                    {tag}
-                  </span>
+
+              {/* Bullet features */}
+              <ul className="space-y-1.5 mb-5 flex-grow">
+                {project.bullets.map((b, bIdx) => (
+                  <li key={bIdx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
+                    {b}
+                  </li>
                 ))}
+              </ul>
+
+              {/* Tech stack */}
+              <div className="mb-5 pt-4 border-t border-border/40">
+                <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  Tech
+                </p>
+                <p className="text-xs font-mono text-primary/80 leading-relaxed">
+                  {project.tech.join(" • ")}
+                </p>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex gap-2 flex-wrap">
+                {project.links.github && (
+                  <a
+                    href={project.links.github}
+                    data-testid={`link-github-${idx}`}
+                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 font-mono"
+                  >
+                    <Github size={12} />
+                    GitHub
+                  </a>
+                )}
+                {project.links.architecture && (
+                  <a
+                    href={project.links.architecture}
+                    data-testid={`link-architecture-${idx}`}
+                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-secondary hover:border-secondary/50 transition-all duration-200 font-mono"
+                  >
+                    <Network size={12} />
+                    Architecture
+                  </a>
+                )}
+                {project.links.caseStudy && (
+                  <a
+                    href={project.links.caseStudy}
+                    data-testid={`link-casestudy-${idx}`}
+                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-accent hover:border-accent/50 transition-all duration-200 font-mono"
+                  >
+                    <BookOpen size={12} />
+                    Case Study
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
