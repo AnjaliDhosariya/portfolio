@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, BookOpen, Network, X, ArrowRight, ExternalLink, Layers } from "lucide-react";
+import { Github, ArrowRight, ExternalLink, Layers, Network } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -25,8 +25,7 @@ interface Project {
   tech: string[];
   links: {
     github?: string;
-    architecture?: string;
-    caseStudy?: string;
+    demo?: string;
   };
 }
 
@@ -59,7 +58,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "Gemini 2.5 Flash", "FastAPI", "Supabase pgVector", "RAG"],
-    links: { github: "#", architecture: "#", caseStudy: "#" },
+    links: { github: "#" },
   },
   {
     title: "CodeInsight AI",
@@ -89,7 +88,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "Gemini", "FastAPI", "RAG", "Supabase pgVector", "Vector Search"],
-    links: { github: "#", architecture: "#", caseStudy: "#" },
+    links: { github: "#" },
   },
   {
     title: "VoiceScreenAI",
@@ -119,7 +118,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "FastAPI", "Supabase", "PostgreSQL", "Llama"],
-    links: { github: "#", architecture: "#", caseStudy: "#" },
+    links: { github: "#" },
   },
   {
     title: "Medical AI Assistant",
@@ -149,7 +148,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangChain", "Pinecone", "Google Gen AI", "Groq", "LLaMA-3", "FastAPI"],
-    links: { github: "#", architecture: "#", caseStudy: "#" },
+    links: { github: "#" },
   },
   {
     title: "News Summarizer & TTS",
@@ -179,7 +178,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["Groq Llama", "gTTS", "NLP", "Sentiment Analysis", "Python"],
-    links: { github: "#", architecture: "#", caseStudy: "#" },
+    links: { github: "#" },
   },
 ];
 
@@ -221,18 +220,9 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
       >
         {/* Header */}
         <div className="px-6 pt-6 pb-4 border-b border-border/40 shrink-0">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <DialogTitle className="text-xl font-bold text-white mb-1">{project.title}</DialogTitle>
-              <p className="text-xs text-secondary font-medium">{project.subtitle}</p>
-            </div>
-            <button
-              onClick={onClose}
-              data-testid="button-dialog-close"
-              className="shrink-0 p-1.5 rounded-md text-muted-foreground hover:text-white hover:bg-white/10 transition-colors"
-            >
-              <X size={16} />
-            </button>
+          <div>
+            <DialogTitle className="text-xl font-bold text-white mb-1 pr-8">{project.title}</DialogTitle>
+            <p className="text-xs text-secondary font-medium">{project.subtitle}</p>
           </div>
 
           {/* Tabs */}
@@ -341,31 +331,15 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
               <Github size={12} /> GitHub
             </a>
           )}
-          {project.links.architecture && (
+          {project.links.demo && (
             <a
-              href={project.links.architecture}
-              data-testid="link-dialog-architecture"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-secondary hover:border-secondary/50 transition-all font-mono"
+              href={project.links.demo}
+              data-testid="link-dialog-demo"
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all font-mono"
             >
-              <Network size={12} /> Architecture
+              <ExternalLink size={12} /> Live Demo
             </a>
           )}
-          {project.links.caseStudy && (
-            <a
-              href={project.links.caseStudy}
-              data-testid="link-dialog-casestudy"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-accent hover:border-accent/50 transition-all font-mono"
-            >
-              <BookOpen size={12} /> Case Study
-            </a>
-          )}
-          <a
-            href="#"
-            data-testid="link-dialog-external"
-            className="ml-auto flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all font-mono"
-          >
-            <ExternalLink size={12} /> View Project
-          </a>
         </div>
       </DialogContent>
     </Dialog>
