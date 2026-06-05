@@ -112,7 +112,7 @@ export default function Hero() {
               <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-white transition-colors" data-testid="link-github">
                 <Github size={24} />
               </a>
-              <a href="https://www.linkedin.com/in/anjalidhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin">
+              <a href="https://in.linkedin.com/in/anjalidhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin">
                 <Linkedin size={24} />
               </a>
               <a href="mailto:anjalidhosariya1126@gmail.com" className="text-muted-foreground hover:text-secondary transition-colors" data-testid="link-email">
