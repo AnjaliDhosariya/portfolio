@@ -35,7 +35,7 @@ export default function About() {
                   <Terminal size={24} />
                 </div>
                 <div>
-                  <h3 className="text-white font-mono font-bold mb-1">GATE 2025</h3>
+                  <h3 className="text-foreground font-mono font-bold mb-1">GATE 2025</h3>
                   <p className="text-sm text-muted-foreground">AIR 3219 in Data Science & AI</p>
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function About() {
                   <BrainCircuit size={24} />
                 </div>
                 <div>
-                  <h3 className="text-white font-mono font-bold mb-1">Scholarship</h3>
+                  <h3 className="text-foreground font-mono font-bold mb-1">Scholarship</h3>
                   <p className="text-sm text-muted-foreground">Medhavi Vidyarthi Yojana Awardee</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function About() {
                   <Code2 size={24} />
                 </div>
                 <div>
-                  <h3 className="text-white font-mono font-bold mb-1">Engineering</h3>
+                  <h3 className="text-foreground font-mono font-bold mb-1">Engineering</h3>
                   <p className="text-sm text-muted-foreground">Full-stack Python & FastAPI</p>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export default function About() {
                   <Database size={24} />
                 </div>
                 <div>
-                  <h3 className="text-white font-mono font-bold mb-1">Data & Vector</h3>
+                  <h3 className="text-foreground font-mono font-bold mb-1">Data & Vector</h3>
                   <p className="text-sm text-muted-foreground">PostgreSQL, pgVector, MongoDB</p>
                 </div>
               </div>

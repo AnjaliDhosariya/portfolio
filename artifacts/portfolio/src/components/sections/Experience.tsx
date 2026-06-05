@@ -68,7 +68,7 @@ export default function Experience() {
               <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-background" />
               
               <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2 gap-2">
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-foreground">
                   {exp.role} <span className="text-primary">@ {exp.company}</span>
                 </h3>
                 <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">

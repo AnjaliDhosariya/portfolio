@@ -50,7 +50,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter text-white mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter text-foreground mb-6"
           >
             Anjali Dhosariya.
           </motion.h1>
@@ -96,12 +96,12 @@ export default function Hero() {
                 View Projects
                 <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
               </span>
-              <div className="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full" />
+              <div className="absolute inset-0 h-full w-0 bg-foreground/20 transition-all duration-300 ease-out group-hover:w-full" />
             </a>
 
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/10 text-white font-mono font-medium rounded-sm hover:bg-white/5 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-foreground/10 text-foreground font-mono font-medium rounded-sm hover:bg-foreground/5 transition-colors"
               data-testid="link-download-resume"
             >
               <Download size={18} />
@@ -109,7 +109,7 @@ export default function Hero() {
             </a>
 
             <div className="flex items-center gap-4 ml-4">
-              <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-white transition-colors" data-testid="link-github">
+              <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-github">
                 <Github size={24} />
               </a>
               <a href="https://in.linkedin.com/in/anjalidhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin">

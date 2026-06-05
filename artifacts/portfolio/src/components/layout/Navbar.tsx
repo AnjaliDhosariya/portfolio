@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 const NAV_LINKS = [
   { href: "#about", label: "About" },
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +40,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -61,6 +63,16 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Theme Toggle */}
+        <button
+          onClick={toggle}
+          data-testid="button-theme-toggle"
+          className="hidden md:flex items-center justify-center w-9 h-9 rounded-md border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
+
         {/* Mobile Toggle */}
         <button
           className="md:hidden text-foreground"
@@ -77,7 +89,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-white/5 overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border/40 overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {NAV_LINKS.map((link) => (

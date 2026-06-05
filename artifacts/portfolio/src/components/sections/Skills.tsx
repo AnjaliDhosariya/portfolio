@@ -134,7 +134,7 @@ export default function Skills() {
               variants={itemVariants}
               className="bg-card/50 backdrop-blur-sm border border-card-border p-6 rounded-xl"
             >
-              <div className="flex items-center gap-3 mb-4 text-white font-mono font-semibold">
+              <div className="flex items-center gap-3 mb-4 text-foreground font-mono font-semibold">
                 <span className="text-primary">{category.icon}</span>
                 {category.title}
               </div>
@@ -142,7 +142,7 @@ export default function Skills() {
                 {category.skills.map((skill, sIdx) => (
                   <div 
                     key={sIdx}
-                    className="flex items-center gap-2 bg-background border border-border px-3 py-1.5 rounded-full text-sm text-muted-foreground hover:text-white hover:border-primary/50 transition-colors"
+                    className="flex items-center gap-2 bg-background border border-border px-3 py-1.5 rounded-full text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                   >
                     {skill.icon && <span className="text-primary">{skill.icon}</span>}
                     {skill.name}

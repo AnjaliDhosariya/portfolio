@@ -39,7 +39,7 @@ export default function Contact() {
           </div>
 
           <div className="flex justify-center gap-6 mb-12">
-            <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-white transition-colors p-3 bg-card border border-card-border rounded-full hover:border-primary/50" data-testid="link-footer-github">
+            <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-3 bg-card border border-card-border rounded-full hover:border-primary/50" data-testid="link-footer-github">
               <Github size={24} />
             </a>
             <a href="https://in.linkedin.com/in/anjalidhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-3 bg-card border border-card-border rounded-full hover:border-primary/50" data-testid="link-footer-linkedin">

@@ -195,7 +195,7 @@ function ArchDiagram({ steps }: { steps: ArchStep[] }) {
               {i + 1}
             </span>
             <div>
-              <p className="text-xs font-semibold text-white">{step.label}</p>
+              <p className="text-xs font-semibold text-foreground">{step.label}</p>
               <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
             </div>
           </div>
@@ -224,7 +224,7 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
         {/* Header */}
         <div className="px-6 pt-6 pb-4 border-b border-border/40 shrink-0">
           <div>
-            <DialogTitle className="text-xl font-bold text-white mb-1 pr-8">{project.title}</DialogTitle>
+            <DialogTitle className="text-xl font-bold text-foreground mb-1 pr-8">{project.title}</DialogTitle>
             <p className="text-xs text-secondary font-medium">{project.subtitle}</p>
           </div>
 
@@ -238,7 +238,7 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
                 className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-mono transition-all duration-200 ${
                   tab === t
                     ? "bg-primary/20 text-primary border border-primary/40"
-                    : "text-muted-foreground hover:text-white border border-transparent"
+                    : "text-muted-foreground hover:text-foreground border border-transparent"
                 }`}
               >
                 {t === "overview" ? <Layers size={11} /> : <Network size={11} />}
@@ -389,7 +389,7 @@ export default function Projects() {
               onClick={() => setSelected(project)}
               className="bg-card border border-card-border rounded-xl p-6 flex flex-col cursor-pointer hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.1)] transition-all duration-300 group"
             >
-              <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-1">
+              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-1">
                 {project.title}
               </h3>
               <p className="text-xs text-secondary font-medium mb-4 leading-snug">
