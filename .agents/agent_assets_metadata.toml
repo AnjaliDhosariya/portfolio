@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "NTvX6P7xE-Pv6XDIUWi4s"
+uri = "file://artifacts/portfolio/public/hero-bg.png"
+type = "image"
+title = "dark AI neural network background"
