@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "Gemini 2.5 Flash", "FastAPI", "Supabase pgVector", "RAG"],
-    links: { github: "#" },
+    links: {},
   },
   {
     title: "CodeInsight AI",
@@ -90,7 +90,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "Gemini", "FastAPI", "RAG", "Supabase pgVector", "Vector Search"],
-    links: { github: "#" },
+    links: {},
   },
   {
     title: "VoiceScreenAI",
@@ -121,7 +121,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangGraph", "FastAPI", "Supabase", "PostgreSQL", "Llama"],
-    links: { github: "#" },
+    links: { github: "https://github.com/AnjaliDhosariya/VoiceScreenAIInterview" },
   },
   {
     title: "Medical AI Assistant",
@@ -151,7 +151,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["LangChain", "Pinecone", "Google Gen AI", "Groq", "LLaMA-3", "FastAPI"],
-    links: { github: "#" },
+    links: { github: "https://github.com/AnjaliDhosariya/Medical-AI-Assistant" },
   },
   {
     title: "News Summarizer & TTS",
@@ -181,7 +181,7 @@ const PROJECTS: Project[] = [
       ],
     },
     tech: ["Groq Llama", "gTTS", "NLP", "Sentiment Analysis", "Python"],
-    links: { github: "#" },
+    links: { github: "https://github.com/AnjaliDhosariya/NewsInsight" },
   },
 ];
 
