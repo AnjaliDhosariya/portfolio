@@ -32,7 +32,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Generative AI",
-    icon: <BrainCircuit size={20} className="text-secondary" />,
+    icon: <BrainCircuit size={20} className="text-[#00F0FF]" />,
     skills: [
       { name: "LLMs" },
       { name: "LangChain", icon: <SiLangchain /> },
@@ -116,8 +116,8 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-mono font-bold mb-12 flex items-center gap-4">
-            <span className="text-primary text-xl">02.</span> Technical Arsenal
-            <div className="h-px bg-border flex-grow ml-4" />
+            <span className="text-[#00F0FF] text-xl">02.</span> Technical Arsenal
+            <div className="h-px bg-[#1F2937] flex-grow ml-4" />
           </h2>
         </motion.div>
 
@@ -132,19 +132,19 @@ export default function Skills() {
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="bg-card/50 backdrop-blur-sm border border-card-border p-6 rounded-xl"
+              className="bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#1F2937] p-6 rounded-xl"
             >
-              <div className="flex items-center gap-3 mb-4 text-foreground font-mono font-semibold">
-                <span className="text-primary">{category.icon}</span>
+              <div className="flex items-center gap-3 mb-4 text-[#F0F0F0] font-mono font-semibold">
+                <span className="text-[#00F0FF]">{category.icon}</span>
                 {category.title}
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, sIdx) => (
                   <div 
                     key={sIdx}
-                    className="flex items-center gap-2 bg-background border border-border px-3 py-1.5 rounded-full text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
+                    className="flex items-center gap-2 bg-[#0A0A0A] border border-[#1F2937] px-3 py-1.5 rounded-full text-sm text-[#6B7280] hover:text-[#F0F0F0] hover:border-[#FF00A0]/50 transition-colors"
                   >
-                    {skill.icon && <span className="text-primary">{skill.icon}</span>}
+                    {skill.icon && <span className="text-[#FF00A0]">{skill.icon}</span>}
                     {skill.name}
                   </div>
                 ))}

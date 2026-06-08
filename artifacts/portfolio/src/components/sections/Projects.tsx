@@ -318,22 +318,22 @@ function ArchDiagram({ steps }: { steps: ArchStep[] }) {
     <div className="flex flex-col gap-1.5">
       {steps.map((step, i) => (
         <div key={i} className="flex flex-col">
-          <div className="flex items-start gap-3 bg-background/60 border border-border/40 rounded-lg px-3 py-2.5">
-            <span className="shrink-0 w-5 h-5 rounded-full bg-primary/20 border border-primary/40 text-primary text-[10px] font-mono font-bold flex items-center justify-center mt-0.5">
+          <div className="flex items-start gap-3 bg-[#0A0A0A]/60 border border-[#1F2937]/40 rounded-lg px-3 py-2.5">
+            <span className="shrink-0 w-5 h-5 rounded-full bg-[#FF00A0]/20 border border-[#FF00A0]/40 text-[#FF00A0] text-[10px] font-mono font-bold flex items-center justify-center mt-0.5">
               {i + 1}
             </span>
             <div>
-              <p className="text-xs font-semibold text-foreground">
+              <p className="text-xs font-semibold text-[#F0F0F0]">
                 {step.label}
               </p>
-              <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
+              <p className="text-[11px] text-[#6B7280] leading-snug mt-0.5">
                 {step.desc}
               </p>
             </div>
           </div>
           {i < steps.length - 1 && (
             <div className="flex justify-center py-0.5">
-              <ArrowRight size={12} className="text-primary/40 rotate-90" />
+              <ArrowRight size={12} className="text-[#FF00A0]/40 rotate-90" />
             </div>
           )}
         </div>
@@ -363,16 +363,16 @@ function ProjectDialog({
       }}
     >
       <DialogContent
-        className="max-w-2xl w-full bg-card border-border/60 p-0 overflow-hidden rounded-2xl max-h-[90vh] flex flex-col"
+        className="max-w-2xl w-full bg-[#0A0A0A] border border-[#1F2937]/60 p-0 overflow-hidden rounded-2xl max-h-[90vh] flex flex-col"
         data-testid="dialog-project"
       >
         {/* Header */}
-        <div className="px-6 pt-6 pb-4 border-b border-border/40 shrink-0">
+        <div className="px-6 pt-6 pb-4 border-b border-[#1F2937]/40 shrink-0">
           <div>
-            <DialogTitle className="text-xl font-bold text-foreground mb-1 pr-8">
+            <DialogTitle className="text-xl font-bold text-[#F0F0F0] mb-1 pr-8">
               {project.title}
             </DialogTitle>
-            <p className="text-xs text-secondary font-medium">
+            <p className="text-xs text-[#00F0FF] font-medium">
               {project.subtitle}
             </p>
           </div>
@@ -386,8 +386,8 @@ function ProjectDialog({
                 onClick={() => setTab(t)}
                 className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-mono transition-all duration-200 ${
                   tab === t
-                    ? "bg-primary/20 text-primary border border-primary/40"
-                    : "text-muted-foreground hover:text-foreground border border-transparent"
+                    ? "bg-[#FF00A0]/20 text-[#FF00A0] border border-[#FF00A0]/40"
+                    : "text-[#6B7280] hover:text-[#F0F0F0] border border-transparent"
                 }`}
               >
                 {t === "overview" ? (
@@ -415,26 +415,26 @@ function ProjectDialog({
               >
                 {/* Overview */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  <h4 className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-2">
                     Overview
                   </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-[#6B7280] leading-relaxed">
                     {project.overview}
                   </p>
                 </div>
 
                 {/* Key Features */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  <h4 className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-2">
                     Key Features
                   </h4>
                   <ul className="space-y-2">
                     {project.bullets.map((b, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                        className="flex items-start gap-2 text-sm text-[#6B7280]"
                       >
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF00A0]/70 shrink-0" />
                         {b}
                       </li>
                     ))}
@@ -443,19 +443,19 @@ function ProjectDialog({
 
                 {/* Outcomes */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  <h4 className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-2">
                     Impact
                   </h4>
                   <div className="grid grid-cols-3 gap-3">
                     {project.outcomes.map((o, i) => (
                       <div
                         key={i}
-                        className="bg-background/60 border border-border/40 rounded-lg px-3 py-3 text-center"
+                        className="bg-[#0A0A0A]/60 border border-[#1F2937]/40 rounded-lg px-3 py-3 text-center"
                       >
-                        <p className="text-base font-bold text-primary font-mono">
+                        <p className="text-base font-bold text-[#FF00A0] font-mono">
                           {o.metric}
                         </p>
-                        <p className="text-[10px] text-muted-foreground leading-tight mt-1">
+                        <p className="text-[10px] text-[#6B7280] leading-tight mt-1">
                           {o.label}
                         </p>
                       </div>
@@ -465,14 +465,14 @@ function ProjectDialog({
 
                 {/* Tech */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  <h4 className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-2">
                     Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t, i) => (
                       <span
                         key={i}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary/80"
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#FF00A0]/10 border border-[#FF00A0]/20 text-[#FF00A0]/80"
                       >
                         {t}
                       </span>
@@ -490,14 +490,14 @@ function ProjectDialog({
                 className="space-y-4"
               >
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-1">
+                  <h4 className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-1">
                     {project.arch.title}
                   </h4>
-                  <p className="text-xs text-muted-foreground/60 mb-4">
+                  <p className="text-xs text-[#6B7280]/60 mb-4">
                     Step-by-step data and control flow
                   </p>
                   {project.arch.image && (
-                    <div className="mb-5 rounded-xl overflow-hidden border border-border/40">
+                    <div className="mb-5 rounded-xl overflow-hidden border border-[#1F2937]/40">
                       <img
                         src={project.arch.image}
                         alt={`${project.title} architecture diagram`}
@@ -513,12 +513,12 @@ function ProjectDialog({
         </div>
 
         {/* Footer links */}
-        <div className="px-6 py-4 border-t border-border/40 flex gap-2 flex-wrap shrink-0">
+        <div className="px-6 py-4 border-t border-[#1F2937]/40 flex gap-2 flex-wrap shrink-0">
           {project.links.github && (
             <a
               href={project.links.github}
               data-testid="link-dialog-github"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all font-mono"
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border border-[#1F2937]/60 text-[#6B7280] hover:text-[#FF00A0] hover:border-[#FF00A0]/50 transition-all font-mono"
             >
               <Github size={12} /> GitHub
             </a>
@@ -527,7 +527,7 @@ function ProjectDialog({
             <a
               href={project.links.demo}
               data-testid="link-dialog-demo"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all font-mono"
+              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md bg-[#FF00A0]/10 border border-[#FF00A0]/30 text-[#FF00A0] hover:bg-[#FF00A0]/20 transition-all font-mono"
             >
               <ExternalLink size={12} /> Live Demo
             </a>
@@ -542,7 +542,7 @@ export default function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 relative bg-card/20">
+    <section id="projects" className="py-24 relative bg-[#0A0A0A]/20">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -551,11 +551,11 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-mono font-bold mb-3 flex items-center gap-4">
-            <span className="text-primary text-xl">04.</span> Some Things I've
+            <span className="text-[#00F0FF] text-xl">04.</span> Some Things I've
             Built
-            <div className="h-px bg-border flex-grow ml-4" />
+            <div className="h-px bg-[#1F2937] flex-grow ml-4" />
           </h2>
-          <p className="text-xs text-muted-foreground/60 font-mono mb-12">
+          <p className="text-xs text-[#6B7280]/60 font-mono mb-12">
             Click any card to explore the project in detail
           </p>
         </motion.div>
@@ -575,12 +575,12 @@ export default function Projects() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               onClick={() => setSelected(project)}
-              className="bg-card border border-card-border rounded-xl p-6 flex flex-col cursor-pointer hover:border-primary/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.1)] transition-all duration-500 group"
+              className="bg-[#0A0A0A] border border-[#1F2937] rounded-xl p-6 flex flex-col cursor-pointer hover:border-[#FF00A0]/50 hover:shadow-[0_0_24px_rgba(255,0,160,0.15)] transition-all duration-500 group"
             >
-              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-1">
+              <h3 className="text-lg font-bold text-[#F0F0F0] group-hover:text-[#FF00A0] transition-colors mb-1">
                 {project.title}
               </h3>
-              <p className="text-xs text-secondary font-medium mb-4 leading-snug">
+              <p className="text-xs text-[#00F0FF] font-medium mb-4 leading-snug">
                 {project.subtitle}
               </p>
 
@@ -588,19 +588,19 @@ export default function Projects() {
                 {project.bullets.map((b, bIdx) => (
                   <li
                     key={bIdx}
-                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                    className="flex items-start gap-2 text-sm text-[#6B7280]"
                   >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF00A0]/70 shrink-0" />
                     {b}
                   </li>
                 ))}
               </ul>
 
-              <div className="mb-4 pt-4 border-t border-border/40">
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+              <div className="mb-4 pt-4 border-t border-[#1F2937]/40">
+                <p className="text-[10px] uppercase tracking-widest text-[#6B7280]/60 font-mono mb-2">
                   Tech
                 </p>
-                <p className="text-xs font-mono text-primary/80 leading-relaxed">
+                <p className="text-xs font-mono text-[#FF00A0]/80 leading-relaxed">
                   {project.tech.join(" • ")}
                 </p>
               </div>
@@ -615,14 +615,14 @@ export default function Projects() {
                       <a
                         href={project.links.github}
                         data-testid={`link-github-${idx}`}
-                        className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all font-mono"
+                        className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md border border-[#1F2937]/60 text-[#6B7280] hover:text-[#FF00A0] hover:border-[#FF00A0]/50 transition-all font-mono"
                       >
                         <Github size={11} /> GitHub
                       </a>
                     </span>
                   )}
                 </div>
-                <span className="text-xs text-muted-foreground/50 font-mono flex items-center gap-1 group-hover:text-primary/60 transition-colors">
+                <span className="text-xs text-[#6B7280]/50 font-mono flex items-center gap-1 group-hover:text-[#FF00A0]/60 transition-colors">
                   Details <ArrowRight size={11} />
                 </span>
               </div>

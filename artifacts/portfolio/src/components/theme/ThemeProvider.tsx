@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-type Theme = "dark" | "light";
+type Theme = "cyberpunk" | "minimalist";
 
 interface ThemeContextType {
   theme: Theme;
@@ -14,7 +14,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
+  theme: "cyberpunk",
   toggle: () => {},
 });
 
@@ -26,18 +26,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme") as Theme | null;
-      if (saved) return saved;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+      if (saved && (saved === "cyberpunk" || saved === "minimalist")) return saved;
+      return "cyberpunk";
     }
-    return "dark";
+    return "cyberpunk";
   });
 
   useEffect(() => {
     const root = document.documentElement;
 
-    if (theme === "light") {
+    if (theme === "minimalist") {
       root.classList.add("light");
     } else {
       root.classList.remove("light");
@@ -46,7 +44,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggle = () => setTheme((t) => (t === "cyberpunk" ? "minimalist" : "cyberpunk"));
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>

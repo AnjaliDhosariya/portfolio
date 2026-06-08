@@ -1,169 +1,219 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, ChevronRight, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronRight, Download } from "lucide-react";
+
+const CodeRain = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    setCanvasSize();
+    window.addEventListener("resize", setCanvasSize);
+
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
+    const fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = Array.from({ length: columns }).fill(1) as number[];
+
+    const draw = () => {
+      ctx.fillStyle = "rgba(5, 5, 5, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillStyle = Math.random() > 0.5 ? "#00F0FF" : "#FF00A0";
+        ctx.globalAlpha = 0.08;
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const interval = setInterval(draw, 50);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", setCanvasSize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0 w-full h-full pointer-events-none"
+    />
+  );
+};
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
-  const [displayText, setDisplayText] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const fullSubtitle = "AI/ML Engineer | Generative AI | Multi-Agent Systems";
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const roles = ["AI/ML Engineer", "Generative AI Builder", "Python Developer"];
-  const [roleIndex, setRoleIndex] = useState(0);
-
   useEffect(() => {
+    let i = 0;
     const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
+      setSubtitle(fullSubtitle.slice(0, i));
+      i++;
+      if (i > fullSubtitle.length) clearInterval(interval);
+    }, 40);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const currentRole = roles[roleIndex];
-
-    setDisplayText("");
-
-    const typingInterval = setInterval(() => {
-      setDisplayText(currentRole.slice(0, currentIndex + 1));
-      currentIndex++;
-
-      if (currentIndex >= currentRole.length) {
-        clearInterval(typingInterval);
-      }
-    }, 80);
-
-    return () => clearInterval(typingInterval);
-  }, [roleIndex]);
 
   if (!mounted) return null;
 
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#050505]"
     >
-      {/* Background Image / Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/hero-bg.png"
-          alt="Abstract Neural Network"
-          className="w-full h-full object-cover opacity-30 mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
-      </div>
+      {/* Background Effects */}
+      <CodeRain />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(to right, #1F2937 1px, transparent 1px), linear-gradient(to bottom, #1F2937 1px, transparent 1px)`,
+          backgroundSize: "4rem 4rem",
+        }}
+      />
 
-      <div className="container relative z-10 px-6 mx-auto">
-        <div className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="h-px w-8 bg-primary" />
-            <span className="text-primary font-mono text-sm tracking-wider uppercase">
-              Hello, I'm
-            </span>
-          </motion.div>
+      {/* Corner Accents */}
+      <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-[#1F2937] pointer-events-none z-10" />
+      <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#1F2937] pointer-events-none z-10" />
+      <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#1F2937] pointer-events-none z-10" />
+      <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-[#1F2937] pointer-events-none z-10" />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter text-black mb-6"
-          >
-            Anjali Dhosariya.
-          </motion.h1>
+      <div className="container relative z-10 px-4 md:px-8 mx-auto">
+        <div className="max-w-4xl mx-auto">
+          {/* Animated Gradient Border Card */}
+          <div className="animated-border-box shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+            <div className="animated-border-content p-8 md:p-12 lg:p-16 flex flex-col gap-6">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-3xl md:text-5xl font-bold text-muted-foreground mb-8 h-[1.2em] flex items-center"
-          >
-            {" "}
-            <span className="text-secondary ml-3 inline-block">
-              {displayText}
-            </span>
-            <motion.span
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ repeat: Infinity, duration: 1 }}
-              className="inline-block w-[3px] h-[1em] bg-secondary ml-1 align-middle"
-            />
-          </motion.div>
+              {/* Top Bar */}
+              <div className="flex items-center justify-between mb-2 pb-4 border-b border-[#1F2937]/50">
+                <div className="flex items-center gap-2 text-[#6B7280]">
+                  <span className="text-xs tracking-widest uppercase">sys.init_sequence</span>
+                </div>
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#1F2937]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#1F2937]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#FF00A0] shadow-[0_0_8px_#FF00A0]"></div>
+                </div>
+              </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
-          >
-            I build intelligent, multi-agent systems and real-world AI
-            applications that solve complex business problems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-6"
-          >
-            <a
-              href="#projects"
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-mono font-bold tracking-wide overflow-hidden rounded-sm transition-transform hover:scale-[1.02]"
-              data-testid="link-view-projects"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                View Projects
-                <ChevronRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </span>
-              <div className="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full" />
-            </a>
-
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/10 text-white font-mono font-medium rounded-sm hover:bg-white/5 transition-colors"
-              data-testid="link-download-resume"
-            >
-              <Download size={18} />
-              Resume
-            </a>
-
-            <div className="flex items-center gap-4 ml-4">
-              <a
-                href="https://github.com/AnjaliDhosariya"
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground hover:text-white transition-colors"
-                data-testid="link-github"
+              {/* Intro */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-2 text-[#00F0FF] text-sm md:text-base font-bold tracking-wider"
               >
-                <Github size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/anjalidhosariya"
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                data-testid="link-linkedin"
+                <ChevronRight className="w-5 h-5" />
+                <span>HELLO, I&apos;M</span>
+              </motion.div>
+
+              {/* Name with Glitch */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="mailto:anjalidhosariya1126@gmail.com"
-                className="text-muted-foreground hover:text-secondary transition-colors"
-                data-testid="link-email"
+                <h1 className="glitch-load text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase text-[#FF00A0] tracking-tighter leading-none mb-2 break-words">
+                  Anjali Dhosariya
+                </h1>
+              </motion.div>
+
+              {/* Typing Subtitle */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-[#F0F0F0] text-lg md:text-xl lg:text-2xl font-medium min-h-[2rem] md:min-h-[2.5rem] flex items-center"
               >
-                <Mail size={24} />
-              </a>
+                <span className="text-[#6B7280] mr-2">$</span>
+                <span>{subtitle}</span>
+                <span className="inline-block w-3 h-6 md:h-7 bg-[#00F0FF] ml-1 animate-blink shadow-[0_0_8px_#00F0FF]"></span>
+              </motion.div>
+
+              {/* Stats Row */}
+              <div className="flex flex-wrap gap-4 md:gap-8 mt-4 py-6 border-y border-[#1F2937]/50 text-sm md:text-base text-[#6B7280]">
+                <div className="flex flex-col">
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Experience</span>
+                  <span className="text-[#F0F0F0] font-bold">3 Internships</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Portfolio</span>
+                  <span className="text-[#F0F0F0] font-bold">5+ Projects</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Academic</span>
+                  <span className="text-[#F0F0F0] font-bold">9.3 CGPA</span>
+                </div>
+              </div>
+
+              {/* Buttons & Socials */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mt-6">
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="#projects"
+                    className="neon-btn-pink bg-[#FF00A0]/10 border border-[#FF00A0] text-[#FF00A0] px-6 py-3 font-bold tracking-wider uppercase text-sm flex items-center gap-2 group"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                    View Projects
+                  </a>
+                  <a
+                    href="#"
+                    className="neon-btn-cyan bg-transparent border border-[#00F0FF] text-[#00F0FF] px-6 py-3 font-bold tracking-wider uppercase text-sm flex items-center gap-2 group"
+                  >
+                    <Download className="w-4 h-4" />
+                    Resume
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-6">
+                  <a
+                    href="https://github.com/AnjaliDhosariya"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#6B7280] hover:text-[#FF00A0] icon-hover-glow"
+                    aria-label="GitHub"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://in.linkedin.com/in/anjalidhosariya"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#6B7280] hover:text-[#00F0FF] icon-hover-glow"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="mailto:anjalidhosariya1126@gmail.com"
+                    className="text-[#6B7280] hover:text-[#F0F0F0] icon-hover-glow"
+                    aria-label="Email"
+                  >
+                    <Mail className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
