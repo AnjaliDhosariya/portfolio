@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ArrowRight, ExternalLink, Layers, Network } from "lucide-react";
-import voiceScreenArchImg from "@assets/Screenshot_2026-06-05_at_3.36.08_PM_1780661179818.png";
 import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  Github,
+  ArrowRight,
+  ExternalLink,
+  Layers,
+  Network,
+} from "lucide-react";
+import voiceScreenArchImg from "@assets/diagram-export-6-8-2026-10_45_12-AM_1780911049496.png";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 interface ArchStep {
   label: string;
@@ -51,15 +53,39 @@ const PROJECTS: Project[] = [
     arch: {
       title: "Multi-Agent Pipeline",
       steps: [
-        { label: "CRM Ingestion", desc: "Pull deal, contact & meeting data from CRM via FastAPI endpoints" },
-        { label: "Sentiment Agent", desc: "Analyse meeting transcripts for objections, tone & intent signals" },
-        { label: "Research Agent", desc: "Enrich company profiles with external business signals via web search" },
-        { label: "Scoring Engine", desc: "Score deals by engagement history, objection severity & momentum" },
-        { label: "Strategy Agent", desc: "Generate personalised recovery plan & outreach draft per deal" },
-        { label: "CRM Update", desc: "Auto-write structured notes and next-steps back to the CRM" },
+        {
+          label: "CRM Ingestion",
+          desc: "Pull deal, contact & meeting data from CRM via FastAPI endpoints",
+        },
+        {
+          label: "Sentiment Agent",
+          desc: "Analyse meeting transcripts for objections, tone & intent signals",
+        },
+        {
+          label: "Research Agent",
+          desc: "Enrich company profiles with external business signals via web search",
+        },
+        {
+          label: "Scoring Engine",
+          desc: "Score deals by engagement history, objection severity & momentum",
+        },
+        {
+          label: "Strategy Agent",
+          desc: "Generate personalised recovery plan & outreach draft per deal",
+        },
+        {
+          label: "CRM Update",
+          desc: "Auto-write structured notes and next-steps back to the CRM",
+        },
       ],
     },
-    tech: ["LangGraph", "Gemini 2.5 Flash", "FastAPI", "Supabase pgVector", "RAG"],
+    tech: [
+      "LangGraph",
+      "Gemini 2.5 Flash",
+      "FastAPI",
+      "Supabase pgVector",
+      "RAG",
+    ],
     links: {},
   },
   {
@@ -81,15 +107,40 @@ const PROJECTS: Project[] = [
     arch: {
       title: "Retrieval & Analysis Pipeline",
       steps: [
-        { label: "Repo Indexing", desc: "Clone repo, parse files by type, chunk and embed code segments" },
-        { label: "Vector Store", desc: "Store embeddings in Supabase pgVector with file metadata" },
-        { label: "Query Router", desc: "Classify user intent — search, RCA, PRD generation, or Q&A" },
-        { label: "RAG Retrieval", desc: "Semantic search retrieves the most relevant code chunks" },
-        { label: "LangGraph Agent", desc: "Orchestrate multi-step reasoning — trace calls, flag impact zones" },
-        { label: "Response", desc: "Return structured answer, code snippets, or generated PRD document" },
+        {
+          label: "Repo Indexing",
+          desc: "Clone repo, parse files by type, chunk and embed code segments",
+        },
+        {
+          label: "Vector Store",
+          desc: "Store embeddings in Supabase pgVector with file metadata",
+        },
+        {
+          label: "Query Router",
+          desc: "Classify user intent — search, RCA, PRD generation, or Q&A",
+        },
+        {
+          label: "RAG Retrieval",
+          desc: "Semantic search retrieves the most relevant code chunks",
+        },
+        {
+          label: "LangGraph Agent",
+          desc: "Orchestrate multi-step reasoning — trace calls, flag impact zones",
+        },
+        {
+          label: "Response",
+          desc: "Return structured answer, code snippets, or generated PRD document",
+        },
       ],
     },
-    tech: ["LangGraph", "Gemini", "FastAPI", "RAG", "Supabase pgVector", "Vector Search"],
+    tech: [
+      "LangGraph",
+      "Gemini",
+      "FastAPI",
+      "RAG",
+      "Supabase pgVector",
+      "Vector Search",
+    ],
     links: {},
   },
   {
@@ -105,23 +156,46 @@ const PROJECTS: Project[] = [
     ],
     outcomes: [
       { metric: "10×", label: "More candidates screened per recruiter" },
-      { metric: "Adaptive", label: "Question generation based on live responses" },
+      {
+        metric: "Adaptive",
+        label: "Question generation based on live responses",
+      },
       { metric: "Explainable", label: "Hiring recommendations with reasoning" },
     ],
     arch: {
       title: "Interview Orchestration Flow",
       image: voiceScreenArchImg,
       steps: [
-        { label: "Session Init", desc: "Load role profile, difficulty level & interview config from Supabase" },
-        { label: "Question Agent", desc: "Generate opening question based on role; adapt follow-ups dynamically" },
-        { label: "Response Analysis", desc: "Evaluate answer for accuracy, depth, communication & red flags" },
-        { label: "Fraud Detection", desc: "Flag copy-paste patterns, unnatural pacing & off-topic responses" },
-        { label: "Scoring Agent", desc: "Aggregate scores per dimension — technical, behavioural, role fit" },
-        { label: "Report Generation", desc: "Produce structured report with hire/no-hire recommendation" },
+        {
+          label: "Session Init",
+          desc: "Load role profile, difficulty level & interview config from Supabase",
+        },
+        {
+          label: "Question Agent",
+          desc: "Generate opening question based on role; adapt follow-ups dynamically",
+        },
+        {
+          label: "Response Analysis",
+          desc: "Evaluate answer for accuracy, depth, communication & red flags",
+        },
+        {
+          label: "Fraud Detection",
+          desc: "Flag copy-paste patterns, unnatural pacing & off-topic responses",
+        },
+        {
+          label: "Scoring Agent",
+          desc: "Aggregate scores per dimension — technical, behavioural, role fit",
+        },
+        {
+          label: "Report Generation",
+          desc: "Produce structured report with hire/no-hire recommendation",
+        },
       ],
     },
     tech: ["LangGraph", "FastAPI", "Supabase", "PostgreSQL", "Llama"],
-    links: { github: "https://github.com/AnjaliDhosariya/VoiceScreenAIInterview" },
+    links: {
+      github: "https://github.com/AnjaliDhosariya/VoiceScreenAIInterview",
+    },
   },
   {
     title: "Medical AI Assistant",
@@ -135,23 +209,53 @@ const PROJECTS: Project[] = [
       "Reduced hallucinations through grounded RAG context",
     ],
     outcomes: [
-      { metric: "Source-cited", label: "Every answer references source passages" },
+      {
+        metric: "Source-cited",
+        label: "Every answer references source passages",
+      },
       { metric: "Low latency", label: "Sub-second inference via Groq API" },
       { metric: "Modular", label: "Pluggable PDF ingest & query APIs" },
     ],
     arch: {
       title: "RAG Architecture",
       steps: [
-        { label: "PDF Upload", desc: "User uploads clinical document via FastAPI endpoint" },
-        { label: "Parsing & Chunking", desc: "Extract text, split into semantic chunks with overlap" },
-        { label: "Embedding", desc: "Generate embeddings with Google Generative AI embedding model" },
-        { label: "Vector Store", desc: "Upsert embeddings and metadata into Pinecone index" },
-        { label: "Query & Retrieve", desc: "Embed user question, retrieve top-K relevant chunks from Pinecone" },
-        { label: "LLM Answer", desc: "Feed chunks + question to LLaMA-3-70B; return cited response" },
+        {
+          label: "PDF Upload",
+          desc: "User uploads clinical document via FastAPI endpoint",
+        },
+        {
+          label: "Parsing & Chunking",
+          desc: "Extract text, split into semantic chunks with overlap",
+        },
+        {
+          label: "Embedding",
+          desc: "Generate embeddings with Google Generative AI embedding model",
+        },
+        {
+          label: "Vector Store",
+          desc: "Upsert embeddings and metadata into Pinecone index",
+        },
+        {
+          label: "Query & Retrieve",
+          desc: "Embed user question, retrieve top-K relevant chunks from Pinecone",
+        },
+        {
+          label: "LLM Answer",
+          desc: "Feed chunks + question to LLaMA-3-70B; return cited response",
+        },
       ],
     },
-    tech: ["LangChain", "Pinecone", "Google Gen AI", "Groq", "LLaMA-3", "FastAPI"],
-    links: { github: "https://github.com/AnjaliDhosariya/Medical-AI-Assistant" },
+    tech: [
+      "LangChain",
+      "Pinecone",
+      "Google Gen AI",
+      "Groq",
+      "LLaMA-3",
+      "FastAPI",
+    ],
+    links: {
+      github: "https://github.com/AnjaliDhosariya/Medical-AI-Assistant",
+    },
   },
   {
     title: "News Summarizer & TTS",
@@ -165,19 +269,43 @@ const PROJECTS: Project[] = [
       "Sentiment & tone analysis across multiple articles",
     ],
     outcomes: [
-      { metric: "Multilingual", label: "English summarisation + Hindi audio output" },
-      { metric: "Real-time", label: "Live news fetch and instant summarisation" },
+      {
+        metric: "Multilingual",
+        label: "English summarisation + Hindi audio output",
+      },
+      {
+        metric: "Real-time",
+        label: "Live news fetch and instant summarisation",
+      },
       { metric: "Comparative", label: "Tone analysis across multiple sources" },
     ],
     arch: {
       title: "Processing Pipeline",
       steps: [
-        { label: "Keyword Input", desc: "User provides topic keywords for news discovery" },
-        { label: "Article Fetch", desc: "Scrape and extract full-text articles from news sources" },
-        { label: "Summarisation", desc: "Groq Llama generates concise, context-aware summaries" },
-        { label: "Sentiment Analysis", desc: "Score each article for tone — positive, negative, neutral" },
-        { label: "Translation", desc: "Translate English summary to Hindi via translation API" },
-        { label: "TTS Output", desc: "Convert Hindi text to speech with gTTS; serve audio file" },
+        {
+          label: "Keyword Input",
+          desc: "User provides topic keywords for news discovery",
+        },
+        {
+          label: "Article Fetch",
+          desc: "Scrape and extract full-text articles from news sources",
+        },
+        {
+          label: "Summarisation",
+          desc: "Groq Llama generates concise, context-aware summaries",
+        },
+        {
+          label: "Sentiment Analysis",
+          desc: "Score each article for tone — positive, negative, neutral",
+        },
+        {
+          label: "Translation",
+          desc: "Translate English summary to Hindi via translation API",
+        },
+        {
+          label: "TTS Output",
+          desc: "Convert Hindi text to speech with gTTS; serve audio file",
+        },
       ],
     },
     tech: ["Groq Llama", "gTTS", "NLP", "Sentiment Analysis", "Python"],
@@ -195,8 +323,12 @@ function ArchDiagram({ steps }: { steps: ArchStep[] }) {
               {i + 1}
             </span>
             <div>
-              <p className="text-xs font-semibold text-foreground">{step.label}</p>
-              <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
+              <p className="text-xs font-semibold text-foreground">
+                {step.label}
+              </p>
+              <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
+                {step.desc}
+              </p>
             </div>
           </div>
           {i < steps.length - 1 && (
@@ -210,13 +342,26 @@ function ArchDiagram({ steps }: { steps: ArchStep[] }) {
   );
 }
 
-function ProjectDialog({ project, open, onClose }: { project: Project | null; open: boolean; onClose: () => void }) {
+function ProjectDialog({
+  project,
+  open,
+  onClose,
+}: {
+  project: Project | null;
+  open: boolean;
+  onClose: () => void;
+}) {
   const [tab, setTab] = useState<"overview" | "architecture">("overview");
 
   if (!project) return null;
 
   return (
-    <Dialog open={open} onOpenChange={(v) => { if (!v) onClose(); }}>
+    <Dialog
+      open={open}
+      onOpenChange={(v) => {
+        if (!v) onClose();
+      }}
+    >
       <DialogContent
         className="max-w-2xl w-full bg-card border-border/60 p-0 overflow-hidden rounded-2xl max-h-[90vh] flex flex-col"
         data-testid="dialog-project"
@@ -224,8 +369,12 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
         {/* Header */}
         <div className="px-6 pt-6 pb-4 border-b border-border/40 shrink-0">
           <div>
-            <DialogTitle className="text-xl font-bold text-foreground mb-1 pr-8">{project.title}</DialogTitle>
-            <p className="text-xs text-secondary font-medium">{project.subtitle}</p>
+            <DialogTitle className="text-xl font-bold text-foreground mb-1 pr-8">
+              {project.title}
+            </DialogTitle>
+            <p className="text-xs text-secondary font-medium">
+              {project.subtitle}
+            </p>
           </div>
 
           {/* Tabs */}
@@ -241,7 +390,11 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
                     : "text-muted-foreground hover:text-foreground border border-transparent"
                 }`}
               >
-                {t === "overview" ? <Layers size={11} /> : <Network size={11} />}
+                {t === "overview" ? (
+                  <Layers size={11} />
+                ) : (
+                  <Network size={11} />
+                )}
                 {t.charAt(0).toUpperCase() + t.slice(1)}
               </button>
             ))}
@@ -254,24 +407,33 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
             {tab === "overview" ? (
               <motion.div
                 key="overview"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
                 className="space-y-5"
               >
                 {/* Overview */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">Overview</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{project.overview}</p>
+                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                    Overview
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {project.overview}
+                  </p>
                 </div>
 
                 {/* Key Features */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">Key Features</h4>
+                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                    Key Features
+                  </h4>
                   <ul className="space-y-2">
                     {project.bullets.map((b, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                      >
                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
                         {b}
                       </li>
@@ -281,12 +443,21 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
 
                 {/* Outcomes */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">Impact</h4>
+                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                    Impact
+                  </h4>
                   <div className="grid grid-cols-3 gap-3">
                     {project.outcomes.map((o, i) => (
-                      <div key={i} className="bg-background/60 border border-border/40 rounded-lg px-3 py-3 text-center">
-                        <p className="text-base font-bold text-primary font-mono">{o.metric}</p>
-                        <p className="text-[10px] text-muted-foreground leading-tight mt-1">{o.label}</p>
+                      <div
+                        key={i}
+                        className="bg-background/60 border border-border/40 rounded-lg px-3 py-3 text-center"
+                      >
+                        <p className="text-base font-bold text-primary font-mono">
+                          {o.metric}
+                        </p>
+                        <p className="text-[10px] text-muted-foreground leading-tight mt-1">
+                          {o.label}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -294,10 +465,15 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
 
                 {/* Tech */}
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">Tech Stack</h4>
+                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                    Tech Stack
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t, i) => (
-                      <span key={i} className="text-xs font-mono px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary/80">
+                      <span
+                        key={i}
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary/80"
+                      >
                         {t}
                       </span>
                     ))}
@@ -307,15 +483,19 @@ function ProjectDialog({ project, open, onClose }: { project: Project | null; op
             ) : (
               <motion.div
                 key="architecture"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
                 className="space-y-4"
               >
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-1">{project.arch.title}</h4>
-                  <p className="text-xs text-muted-foreground/60 mb-4">Step-by-step data and control flow</p>
+                  <h4 className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-1">
+                    {project.arch.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground/60 mb-4">
+                    Step-by-step data and control flow
+                  </p>
                   {project.arch.image && (
                     <div className="mb-5 rounded-xl overflow-hidden border border-border/40">
                       <img
@@ -371,10 +551,13 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-mono font-bold mb-3 flex items-center gap-4">
-            <span className="text-primary text-xl">04.</span> Some Things I've Built
+            <span className="text-primary text-xl">04.</span> Some Things I've
+            Built
             <div className="h-px bg-border flex-grow ml-4" />
           </h2>
-          <p className="text-xs text-muted-foreground/60 font-mono mb-12">Click any card to explore the project in detail</p>
+          <p className="text-xs text-muted-foreground/60 font-mono mb-12">
+            Click any card to explore the project in detail
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -382,12 +565,17 @@ export default function Projects() {
             <motion.div
               key={idx}
               data-testid={`card-project-${idx}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.02 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
+              transition={{
+                duration: 0.7,
+                delay: idx * 0.12,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               onClick={() => setSelected(project)}
-              className="bg-card border border-card-border rounded-xl p-6 flex flex-col cursor-pointer hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.1)] transition-all duration-300 group"
+              className="bg-card border border-card-border rounded-xl p-6 flex flex-col cursor-pointer hover:border-primary/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.1)] transition-all duration-500 group"
             >
               <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-1">
                 {project.title}
@@ -398,7 +586,10 @@ export default function Projects() {
 
               <ul className="space-y-1.5 mb-5 flex-grow">
                 {project.bullets.map((b, bIdx) => (
-                  <li key={bIdx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <li
+                    key={bIdx}
+                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                  >
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
                     {b}
                   </li>
@@ -406,7 +597,9 @@ export default function Projects() {
               </ul>
 
               <div className="mb-4 pt-4 border-t border-border/40">
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">Tech</p>
+                <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono mb-2">
+                  Tech
+                </p>
                 <p className="text-xs font-mono text-primary/80 leading-relaxed">
                   {project.tech.join(" • ")}
                 </p>

@@ -4,6 +4,7 @@ import { Download, ChevronRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
     setMounted(true);
@@ -19,15 +20,36 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    let currentIndex = 0;
+    const currentRole = roles[roleIndex];
+
+    setDisplayText("");
+
+    const typingInterval = setInterval(() => {
+      setDisplayText(currentRole.slice(0, currentIndex + 1));
+      currentIndex++;
+
+      if (currentIndex >= currentRole.length) {
+        clearInterval(typingInterval);
+      }
+    }, 80);
+
+    return () => clearInterval(typingInterval);
+  }, [roleIndex]);
+
   if (!mounted) return null;
 
   return (
-    <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden"
+    >
       {/* Background Image / Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-bg.png" 
-          alt="Abstract Neural Network" 
+        <img
+          src="/hero-bg.png"
+          alt="Abstract Neural Network"
           className="w-full h-full object-cover opacity-30 mix-blend-screen"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
@@ -43,14 +65,16 @@ export default function Hero() {
             className="flex items-center gap-3 mb-6"
           >
             <div className="h-px w-8 bg-primary" />
-            <span className="text-primary font-mono text-sm tracking-wider uppercase">Hello, I'm</span>
+            <span className="text-primary font-mono text-sm tracking-wider uppercase">
+              Hello, I'm
+            </span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter text-foreground mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter text-black mb-6"
           >
             Anjali Dhosariya.
           </motion.h1>
@@ -61,11 +85,11 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold text-muted-foreground mb-8 h-[1.2em] flex items-center"
           >
-            I am a{" "}
+            {" "}
             <span className="text-secondary ml-3 inline-block">
-              {roles[roleIndex]}
+              {displayText}
             </span>
-            <motion.span 
+            <motion.span
               animate={{ opacity: [0, 1, 0] }}
               transition={{ repeat: Infinity, duration: 1 }}
               className="inline-block w-[3px] h-[1em] bg-secondary ml-1 align-middle"
@@ -78,7 +102,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
           >
-            I build intelligent, multi-agent systems and real-world AI applications that solve complex business problems.
+            I build intelligent, multi-agent systems and real-world AI
+            applications that solve complex business problems.
           </motion.p>
 
           <motion.div
@@ -94,14 +119,17 @@ export default function Hero() {
             >
               <span className="relative z-10 flex items-center gap-2">
                 View Projects
-                <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+                <ChevronRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </span>
-              <div className="absolute inset-0 h-full w-0 bg-foreground/20 transition-all duration-300 ease-out group-hover:w-full" />
+              <div className="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full" />
             </a>
 
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-foreground/10 text-foreground font-mono font-medium rounded-sm hover:bg-foreground/5 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-white/10 text-white font-mono font-medium rounded-sm hover:bg-white/5 transition-colors"
               data-testid="link-download-resume"
             >
               <Download size={18} />
@@ -109,13 +137,29 @@ export default function Hero() {
             </a>
 
             <div className="flex items-center gap-4 ml-4">
-              <a href="https://github.com/AnjaliDhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-github">
+              <a
+                href="https://github.com/AnjaliDhosariya"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-white transition-colors"
+                data-testid="link-github"
+              >
                 <Github size={24} />
               </a>
-              <a href="https://in.linkedin.com/in/anjalidhosariya" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin">
+              <a
+                href="https://www.linkedin.com/in/anjalidhosariya"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                data-testid="link-linkedin"
+              >
                 <Linkedin size={24} />
               </a>
-              <a href="mailto:anjalidhosariya1126@gmail.com" className="text-muted-foreground hover:text-secondary transition-colors" data-testid="link-email">
+              <a
+                href="mailto:anjalidhosariya1126@gmail.com"
+                className="text-muted-foreground hover:text-secondary transition-colors"
+                data-testid="link-email"
+              >
                 <Mail size={24} />
               </a>
             </div>

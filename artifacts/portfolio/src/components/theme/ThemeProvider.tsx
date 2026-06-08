@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 
 type Theme = "dark" | "light";
 
@@ -21,17 +27,22 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme") as Theme | null;
       if (saved) return saved;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
     return "dark";
   });
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove("dark");
-    if (theme === "dark") {
-      root.classList.add("dark");
+
+    if (theme === "light") {
+      root.classList.add("light");
+    } else {
+      root.classList.remove("light");
     }
+
     localStorage.setItem("theme", theme);
   }, [theme]);
 
