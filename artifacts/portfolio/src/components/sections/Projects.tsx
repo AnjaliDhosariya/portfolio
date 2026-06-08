@@ -258,7 +258,7 @@ const PROJECTS: Project[] = [
     },
   },
   {
-    title: "News Summarizer & TTS",
+    title: "NewsInsight",
     subtitle: "Multilingual News Intelligence Tool",
     overview:
       "A Python application that fetches real-time news articles by keyword, summarises them using Groq Llama, translates to Hindi, and converts to speech — enabling multilingual audio news consumption. It also runs sentiment analysis across articles to surface comparative tone insights.",

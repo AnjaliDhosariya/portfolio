@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+
+.font-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 3px 0 #00F0FF, -3px 0 #FF00A0; transform: translate(0); }
+  20% { text-shadow: -3px 0 #00F0FF, 3px 0 #FF00A0; transform: translate(-2px, 2px); }
+  40% { text-shadow: 3px 0 #00F0FF, -3px 0 #FF00A0; transform: translate(2px, -2px); }
+  60% { text-shadow: -3px 0 #00F0FF, 3px 0 #FF00A0; transform: translate(-2px, -2px); }
+  80% { text-shadow: 3px 0 #00F0FF, -3px 0 #FF00A0; transform: translate(2px, 2px); }
+  100% { text-shadow: 0 0 20px rgba(255,0,160,0.5); transform: translate(0); }
+}
+
+.glitch-load {
+  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes border-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animated-border-box {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #050505;
+}
+
+.animated-border-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg, 
+    transparent 0deg, 
+    transparent 260deg, 
+    #FF00A0 300deg, 
+    #00F0FF 360deg
+  );
+  animation: border-rotate 4s linear infinite;
+  z-index: 0;
+}
+
+.animated-border-box::after {
+  content: "";
+  position: absolute;
+  inset: 1px; /* border thickness */
+  background: #0A0A0A;
+  border-radius: calc(0.5rem - 1px);
+  z-index: 1;
+}
+
+.animated-border-content {
+  position: relative;
+  z-index: 2;
+}
+
+.neon-btn-pink {
+  box-shadow: 0 0 0px transparent;
+  transition: all 0.3s ease;
+}
+.neon-btn-pink:hover {
+  box-shadow: 0 0 15px #FF00A0, inset 0 0 10px rgba(255,0,160,0.4);
+  text-shadow: 0 0 5px #FF00A0;
+}
+
+.neon-btn-cyan {
+  box-shadow: 0 0 0px transparent;
+  transition: all 0.3s ease;
+}
+.neon-btn-cyan:hover {
+  box-shadow: 0 0 15px #00F0FF, inset 0 0 10px rgba(0,240,255,0.4);
+  text-shadow: 0 0 5px #00F0FF;
+}
+
+.icon-hover-glow {
+  transition: all 0.3s ease;
+}
+.icon-hover-glow:hover {
+  filter: drop-shadow(0 0 8px currentColor);
+}
