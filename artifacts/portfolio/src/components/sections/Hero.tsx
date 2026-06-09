@@ -58,7 +58,7 @@ const CodeRain = () => {
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [subtitle, setSubtitle] = useState("");
-  const fullSubtitle = "AI/ML Engineer | Generative AI | Multi-Agent Systems";
+  const fullSubtitle = "• AI Engineer • GenAI Builder";
 
   useEffect(() => {
     setMounted(true);
