@@ -11,7 +11,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-[#00F0FF] font-mono mb-4">07. What's Next?</p>
+          <p className="text-[#00F0FF] font-mono mb-4">05. What's Next?</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#F0F0F0]">Get In Touch</h2>
           
           <p className="text-[#6B7280] text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
