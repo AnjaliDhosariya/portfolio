@@ -1,10 +1,23 @@
 import { motion } from "framer-motion";
-import { 
-  SiPython, SiTensorflow, SiPytorch, SiLangchain, 
-  SiFastapi, SiPostgresql, SiMongodb, SiGit, 
-  SiGooglecloud
+import {
+  SiPython,
+  SiTensorflow,
+  SiPytorch,
+  SiLangchain,
+  SiFastapi,
+  SiPostgresql,
+  SiMongodb,
+  SiGit,
+  SiGooglecloud,
 } from "react-icons/si";
-import { Code2, BrainCircuit, Server, Database, Cloud, BarChart } from "lucide-react";
+import {
+  Code2,
+  BrainCircuit,
+  Server,
+  Database,
+  Cloud,
+  BarChart,
+} from "lucide-react";
 
 const SKILL_CATEGORIES = [
   {
@@ -14,11 +27,11 @@ const SKILL_CATEGORIES = [
       { name: "Python", icon: <SiPython /> },
       { name: "Java" },
       { name: "C" },
-      { name: "C++" }
-    ]
+      { name: "C++" },
+    ],
   },
   {
-    title: "AI & Machine Learning",
+    title: "ML/DL",
     icon: <BrainCircuit size={20} />,
     skills: [
       { name: "Machine Learning" },
@@ -27,8 +40,8 @@ const SKILL_CATEGORIES = [
       { name: "Transformers" },
       { name: "PyTorch", icon: <SiPytorch /> },
       { name: "TensorFlow", icon: <SiTensorflow /> },
-      { name: "Scikit-Learn" }
-    ]
+      { name: "Scikit-Learn" },
+    ],
   },
   {
     title: "Generative AI",
@@ -42,8 +55,8 @@ const SKILL_CATEGORIES = [
       { name: "Prompt Engineering" },
       { name: "AI Agents" },
       { name: "Vector Databases" },
-      { name: "Hugging Face" }
-    ]
+      { name: "Hugging Face" },
+    ],
   },
   {
     title: "Backend Development",
@@ -51,8 +64,8 @@ const SKILL_CATEGORIES = [
     skills: [
       { name: "FastAPI", icon: <SiFastapi /> },
       { name: "REST APIs" },
-      { name: "Express" }
-    ]
+      { name: "Express" },
+    ],
   },
   {
     title: "Databases",
@@ -62,8 +75,8 @@ const SKILL_CATEGORIES = [
       { name: "MySQL" },
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Supabase" },
-      { name: "pgVector" }
-    ]
+      { name: "pgVector" },
+    ],
   },
   {
     title: "Cloud & DevOps",
@@ -72,8 +85,8 @@ const SKILL_CATEGORIES = [
       { name: "GCP", icon: <SiGooglecloud /> },
       { name: "Azure", icon: <Cloud size={16} /> },
       { name: "Git/GitHub", icon: <SiGit /> },
-      { name: "Google Apps Script" }
-    ]
+      { name: "Google Apps Script" },
+    ],
   },
   {
     title: "Data & Visualization",
@@ -85,9 +98,9 @@ const SKILL_CATEGORIES = [
       { name: "Tableau" },
       { name: "Looker Studio" },
       { name: "Matplotlib" },
-      { name: "Seaborn" }
-    ]
-  }
+      { name: "Seaborn" },
+    ],
+  },
 ];
 
 const containerVariants = {
@@ -95,14 +108,14 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 export default function Skills() {
@@ -116,12 +129,13 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-mono font-bold mb-12 flex items-center gap-4">
-            <span className="text-[#00F0FF] text-xl">02.</span> Technical Arsenal
+            <span className="text-[#00F0FF] text-xl">02.</span> Technical
+            Arsenal
             <div className="h-px bg-[#1F2937] flex-grow ml-4" />
           </h2>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -129,7 +143,7 @@ export default function Skills() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {SKILL_CATEGORIES.map((category, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#1F2937] p-6 rounded-xl"
@@ -140,11 +154,13 @@ export default function Skills() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, sIdx) => (
-                  <div 
+                  <div
                     key={sIdx}
                     className="flex items-center gap-2 bg-[#0A0A0A] border border-[#1F2937] px-3 py-1.5 rounded-full text-sm text-[#6B7280] hover:text-[#F0F0F0] hover:border-[#FF00A0]/50 transition-colors"
                   >
-                    {skill.icon && <span className="text-[#FF00A0]">{skill.icon}</span>}
+                    {skill.icon && (
+                      <span className="text-[#FF00A0]">{skill.icon}</span>
+                    )}
                     {skill.name}
                   </div>
                 ))}

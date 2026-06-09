@@ -18,7 +18,8 @@ const CodeRain = () => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
 
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
+    const letters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
     const fontSize = 14;
     let columns = canvas.width / fontSize;
     let drops = Array.from({ length: columns }).fill(1) as number[];
@@ -101,11 +102,12 @@ export default function Hero() {
           {/* Animated Gradient Border Card */}
           <div className="animated-border-box shadow-[0_0_50px_rgba(0,0,0,0.8)]">
             <div className="animated-border-content p-8 md:p-12 lg:p-16 flex flex-col gap-6">
-
               {/* Top Bar */}
               <div className="flex items-center justify-between mb-2 pb-4 border-b border-[#1F2937]/50">
                 <div className="flex items-center gap-2 text-[#6B7280]">
-                  <span className="text-xs tracking-widest uppercase">sys.init_sequence</span>
+                  <span className="text-xs tracking-widest uppercase">
+                    sys.init_sequence
+                  </span>
                 </div>
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#1F2937]"></div>
@@ -151,15 +153,23 @@ export default function Hero() {
               {/* Stats Row */}
               <div className="flex flex-wrap gap-4 md:gap-8 mt-4 py-6 border-y border-[#1F2937]/50 text-sm md:text-base text-[#6B7280]">
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Experience</span>
-                  <span className="text-[#F0F0F0] font-bold">3 Internships</span>
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">
+                    Experience
+                  </span>
+                  <span className="text-[#F0F0F0] font-bold">
+                    3 Internships
+                  </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Portfolio</span>
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">
+                    Portfolio
+                  </span>
                   <span className="text-[#F0F0F0] font-bold">5+ Projects</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">Academic</span>
+                  <span className="text-xs uppercase tracking-widest mb-1 text-[#00F0FF]">
+                    Academic
+                  </span>
                   <span className="text-[#F0F0F0] font-bold">9.3 CGPA</span>
                 </div>
               </div>
@@ -175,7 +185,7 @@ export default function Hero() {
                     View Projects
                   </a>
                   <a
-                    href="#"
+                    href="https://flowcv.com/resume/svk7mfes3hk6"
                     className="neon-btn-cyan bg-transparent border border-[#00F0FF] text-[#00F0FF] px-6 py-3 font-bold tracking-wider uppercase text-sm flex items-center gap-2 group"
                   >
                     <Download className="w-4 h-4" />
@@ -211,7 +221,6 @@ export default function Hero() {
                   </a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

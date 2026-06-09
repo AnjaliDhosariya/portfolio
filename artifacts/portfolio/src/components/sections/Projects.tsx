@@ -8,6 +8,10 @@ import {
   Network,
 } from "lucide-react";
 import voiceScreenArchImg from "@assets/diagram-export-6-8-2026-10_45_12-AM_1780911049496.png";
+import reviveDeskArchImg from "@assets/diagram-export-6-9-2026-12_09_10-PM.png";
+import medicalAssArchImg from "@assets/diagram-export-6-9-2026-12_19_50-PM.png";
+import NewsArchImg from "@assets/diagram-export-6-9-2026-12_23_46-PM.png";
+
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 interface ArchStep {
@@ -52,6 +56,7 @@ const PROJECTS: Project[] = [
     ],
     arch: {
       title: "Multi-Agent Pipeline",
+      image: reviveDeskArchImg,
       steps: [
         {
           label: "CRM Ingestion",
@@ -218,6 +223,7 @@ const PROJECTS: Project[] = [
     ],
     arch: {
       title: "RAG Architecture",
+      image: medicalAssArchImg,
       steps: [
         {
           label: "PDF Upload",
@@ -281,6 +287,7 @@ const PROJECTS: Project[] = [
     ],
     arch: {
       title: "Processing Pipeline",
+      image: NewsArchImg,
       steps: [
         {
           label: "Keyword Input",
