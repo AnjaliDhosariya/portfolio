@@ -210,7 +210,7 @@
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
-  background: hsl(0 0% 2%);
+  background: var(--color-background);
 }
 
 .animated-border-box::before {
@@ -224,8 +224,8 @@
     from 0deg,
     transparent 0deg,
     transparent 260deg,
-    hsl(320 100% 50%) 300deg,
-    hsl(187 100% 50%) 360deg
+    var(--color-primary) 300deg,
+    var(--color-secondary) 360deg
   );
   animation: border-rotate 4s linear infinite;
   z-index: 0;
@@ -235,9 +235,21 @@
   content: "";
   position: absolute;
   inset: 1px;
-  background: hsl(0 0% 4%);
+  background: var(--color-card);
   border-radius: calc(0.5rem - 1px);
   z-index: 1;
+}
+
+.light .animated-border-box::after {
+  inset: 2px;
+  border-radius: calc(0.5rem - 2px);
+}
+
+.animated-shadow {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+.light .animated-shadow {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
 }
 
 .animated-border-content {

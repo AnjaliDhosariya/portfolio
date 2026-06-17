@@ -50,12 +50,12 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-mono font-bold mb-16 flex items-center gap-4">
-            <span className="text-[#00F0FF] text-xl">03.</span> Where I've Built
-            <div className="h-px bg-[#1F2937] flex-grow ml-4" />
+            <span className="text-secondary text-xl">03.</span> Where I've Built
+            <div className="h-px bg-border flex-grow ml-4" />
           </h2>
         </motion.div>
 
-        <div className="relative border-l border-[#1F2937] ml-4 md:ml-0 space-y-12">
+        <div className="relative border-l border-border ml-4 md:ml-0 space-y-12">
           {EXPERIENCES.map((exp, index) => (
             <motion.div 
               key={index}
@@ -65,23 +65,23 @@ export default function Experience() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative pl-8 md:pl-12"
             >
-              <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-[#FF00A0] shadow-[0_0_8px_#FF00A0] ring-4 ring-[#050505]" />
+              <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_8px_#FF00A0] ring-4 ring-background" />
               
               <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2 gap-2">
-                <h3 className="text-xl font-bold text-[#F0F0F0]">
-                  {exp.role} <span className="text-[#FF00A0]">@ {exp.company}</span>
+                <h3 className="text-xl font-bold text-foreground">
+                  {exp.role} <span className="text-primary">@ {exp.company}</span>
                 </h3>
-                <span className="text-sm font-mono text-[#6B7280] whitespace-nowrap">
+                <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">
                   {exp.period}
                 </span>
               </div>
               
-              <div className="text-sm text-[#00F0FF] mb-4 font-mono">{exp.location}</div>
+              <div className="text-sm text-secondary mb-4 font-mono">{exp.location}</div>
               
               <ul className="space-y-3">
                 {exp.points.map((point, pIdx) => (
-                  <li key={pIdx} className="text-[#6B7280] flex items-start gap-3">
-                    <span className="text-[#00F0FF] mt-1.5 text-xs">▹</span>
+                  <li key={pIdx} className="text-muted-foreground flex items-start gap-3">
+                    <span className="text-secondary mt-1.5 text-xs">▹</span>
                     <span className="leading-relaxed">{point}</span>
                   </li>
                 ))}

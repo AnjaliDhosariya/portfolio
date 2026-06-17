@@ -40,12 +40,12 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-[#1F2937]/40 py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="font-mono text-xl font-bold tracking-tighter text-[#FF00A0]">
-          AD<span className="text-[#00F0FF]">.</span>
+        <Link href="/" className="font-mono text-xl font-bold tracking-tighter text-primary">
+          AD<span className="text-secondary">.</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -54,8 +54,8 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-[#FF00A0] ${
-                activeSection === link.href.substring(1) ? "text-[#FF00A0]" : "text-[#6B7280]"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === link.href.substring(1) ? "text-primary" : "text-muted-foreground"
               }`}
             >
               {link.label}
@@ -67,7 +67,7 @@ export default function Navbar() {
         <button
           onClick={toggle}
           data-testid="button-theme-toggle"
-          className="hidden md:flex items-center justify-center w-9 h-9 rounded-md border border-[#1F2937]/60 text-[#6B7280] hover:text-[#FF00A0] hover:border-[#FF00A0]/50 transition-all"
+          className="hidden md:flex items-center justify-center w-9 h-9 rounded-md border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
           aria-label="Toggle theme"
         >
           {theme === "cyberpunk" ? <Sun size={16} /> : <Moon size={16} />}
@@ -75,7 +75,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-[#F0F0F0]"
+          className="md:hidden text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -89,7 +89,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#050505]/95 backdrop-blur-lg border-b border-[#1F2937]/40 overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border/40 overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {NAV_LINKS.map((link) => (
@@ -97,8 +97,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-sm font-medium transition-colors hover:text-[#FF00A0] ${
-                    activeSection === link.href.substring(1) ? "text-[#FF00A0]" : "text-[#6B7280]"
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    activeSection === link.href.substring(1) ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
                   {link.label}
